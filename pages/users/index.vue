@@ -6,8 +6,8 @@
         <li
           active-class="active"
           class="list-group-item list-group-item-action"
-          v-for="user of 5"
-          :key="user"
+          v-for="user of users"
+          :key="user.id"
           aria-current="true"
         >
           <a
@@ -15,7 +15,7 @@
             class="nav-link active"
             @click.prevent="openUser(user)"
           >
-            User {{user}}
+            {{user.name}}
           </a>
         </li>
       </div>
@@ -26,10 +26,17 @@
 
 <script>
 export default {
-    methods: {
-        openUser(user) {
-            this.$router.push('/users/' + user)
-        }
-    }
+  async asyncData({ $axios }) {
+    const users = await $axios.$get('https://jsonplaceholder.typicode.com/users')
+    return {users}
+  },
+  data: () => ({
+    users: []
+  }),
+  methods: {
+      openUser(user) {
+          this.$router.push('/users/' + user.id)
+      }
+  }
 }
 </script>

@@ -22,8 +22,13 @@
                     Users
                 </nuxt-link>
             </li>
+          <li class="nav-item">
+            <nuxt-link no-prefetch active-class="active" class="nav-link" aria-current="page" to="/login">
+              Login
+            </nuxt-link>
+          </li>
         </ul>
         </div>
     </div>
-    </nav>       
-</template>             
+    </nav>
+</template>
