@@ -13,6 +13,11 @@ export default {
     ]
   },
 
+  loading: {
+    color: 'black',
+    height: '5px'
+  },
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
       '@/node_modules/bootstrap/dist/css/bootstrap.min.css'

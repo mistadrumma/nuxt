@@ -22,13 +22,35 @@
                     Users
                 </nuxt-link>
             </li>
-          <li class="nav-item">
+          <li class="nav-item" v-if="!hasToken">
             <nuxt-link no-prefetch active-class="active" class="nav-link" aria-current="page" to="/login">
               Login
             </nuxt-link>
+          </li>
+          <li class="nav-item" v-else>
+            <a @click.prevent="logout" class="nav-link" aria-current="page" href="#">
+              Logout
+            </a>
           </li>
         </ul>
         </div>
     </div>
     </nav>
 </template>
+
+
+<script>
+export default {
+  computed: {
+    hasToken(){
+      return this.$store.getters.hasToken
+    }
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch('logout')
+      this.$router.push('/login')
+    }
+  }
+}
+</script>
